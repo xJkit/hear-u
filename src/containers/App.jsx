@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Recording, Settings, Login, Finder } from 'containers';
 import { TabBar, Header } from 'components';
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
 const AppComponent = styled.div`
   display: flex;
@@ -15,11 +18,20 @@ const ContentComponent = styled.section`
 const FooterComponent = styled.section``;
 
 class App extends Component {
+  static propTypes = {
+    login: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       selectedIndex: 0,
     };
+  }
+
+  componentWillMount() {
+    const authToken = 'this is a fake token';
+    this.props.login(authToken);
   }
 
   select = index => () => this.setState({ selectedIndex: index });
@@ -53,4 +65,6 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, {
+  login: actions.auth.login,
+})(App);
