@@ -1,22 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Recording, Settings, Login, Finder } from 'containers';
+import { TabBar } from 'components';
 // materia-ui
 import AppBar from 'material-ui/AppBar';
-import FontIcon from 'material-ui/FontIcon';
-import { BottomNavigation, BottomNavigationItem } from 'material-ui/BottomNavigation';
-import Paper from 'material-ui/Paper';
-// import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
-
-const recentsIcon = (
-  <FontIcon className="material-icons">錄音</FontIcon>
-);
-const favoritesIcon = (
-  <FontIcon className="material-icons">檔案</FontIcon>
-);
-const settingsIcon = (
-  <FontIcon className="material-icons">設定</FontIcon>
-);
 
 const AppComponent = styled.div`
   display: flex;
@@ -65,22 +52,10 @@ class App extends Component {
           {this.renderSelectedPage()}
         </ContentComponent>
         <FooterComponent>
-          <Paper>
-            <BottomNavigation selectedIndex={this.state.selectedIndex}>
-              <BottomNavigationItem
-                icon={recentsIcon}
-                onTouchTap={this.select(0)}
-              />
-              <BottomNavigationItem
-                icon={favoritesIcon}
-                onTouchTap={this.select(1)}
-              />
-              <BottomNavigationItem
-                icon={settingsIcon}
-                onTouchTap={this.select(2)}
-              />
-            </BottomNavigation>
-          </Paper>
+          <TabBar
+            selectedIndex={this.state.selectedIndex}
+            select={this.select}
+          />
         </FooterComponent>
       </AppComponent>
     );
