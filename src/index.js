@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -5,10 +6,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import App from 'containers/App';
 import './index.css';
-import createStore from 'store';
+import configureStore from 'store';
+import sagas from 'sagas';
 
-const store = createStore();
 injectTapEventPlugin(); // for material-ui
+
+const store = configureStore();
+store.runSaga(sagas);
 
 ReactDOM.render(
   <Provider store={store}>

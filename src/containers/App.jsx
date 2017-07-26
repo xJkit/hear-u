@@ -30,8 +30,11 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const authToken = 'this is a fake token';
-    this.props.login(authToken);
+    const credentials = {
+      account: 'test',
+      password: '123',
+    };
+    this.props.login(credentials);
   }
 
   select = index => () => this.setState({ selectedIndex: index });

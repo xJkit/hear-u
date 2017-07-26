@@ -1,4 +1,4 @@
-import * as Types from 'actions/ActionTypes';
+import * as Types from 'actions/types';
 import { handleActions } from 'redux-actions';
 
 const initialState = {
@@ -15,7 +15,7 @@ const authReducer = handleActions({
   [Types.AUTH_LOGIN.SUCCESS]: (state, action) => ({
     ...state,
     logged: true,
-    authToken: action.payload.authToken || null,
+    authToken: action.response.authToken || null,
   }),
 }, initialState);
 
