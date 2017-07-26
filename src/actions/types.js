@@ -10,3 +10,4 @@ const createRequestTypes = (base) => {
 export const APP_SAGA_INIT = 'sagas:APP_SAGA_INIT';
 
 export const AUTH_LOGIN = createRequestTypes('auth:AUTH_LOGIN');
+export const AUTH_LOGOUT = createRequestTypes('auth:AUTH_LOGOUT');
