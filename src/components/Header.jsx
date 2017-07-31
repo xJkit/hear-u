@@ -20,28 +20,33 @@ class Header extends Component {
   };
 
   renderLogButton = () => {
+    const LogoutSection = styled.div`
+      display: flex;
+      align-items: center;
+      > .welcome-user {
+        color: white;
+      };
+    `;
     if (this.props.logged) {
-      const LoginSection = styled.div`
-      `;
       const iconButton = (
-        <LoginSection>
-          <span>歡迎回來！ {this.props.account}</span>
-          <IconButton><MoreVertIcon /></IconButton>;
-        </LoginSection>
+        <IconButton><MoreVertIcon /></IconButton>
       )
 
       return (
-        <IconMenu
-          iconButtonElement={iconButton}
-          anchorOrigin={{horizontal: 'right', vertical: 'top'}}
-          targetOrigin={{horizontal: 'right', vertical: 'top'}}
-          iconStyle={{ color: 'white' }}
-        >
-          <MenuItem
-            primaryText="登出"
-            onTouchTap={() => this.props.logout()}
-          />
-        </IconMenu>
+        <LogoutSection>
+          <span className="welcome-user">{this.props.account}</span>
+          <IconMenu
+            iconButtonElement={iconButton}
+            anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+            targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+            iconStyle={{ color: 'white' }}
+          >
+            <MenuItem
+              primaryText="登出"
+              onTouchTap={() => this.props.logout()}
+            />
+          </IconMenu>
+        </LogoutSection>
       );
     }
     return (
