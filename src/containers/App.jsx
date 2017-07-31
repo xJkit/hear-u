@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Recording, Settings, Login, Finder } from 'containers';
-import { TabBar } from 'components';
-// materia-ui
-import AppBar from 'material-ui/AppBar';
+import { TabBar, Header } from 'components';
+import { connect } from 'react-redux';
 
 const AppComponent = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
 `;
-
 const HeaderComponent = styled.section``;
 const ContentComponent = styled.section`
   flex: 1 0 auto;
@@ -43,14 +42,8 @@ class App extends Component {
   render() {
     return (
       <AppComponent>
-        <HeaderComponent>
-          <AppBar
-            title="hearU"
-          />
-        </HeaderComponent>
-        <ContentComponent>
-          {this.renderSelectedPage()}
-        </ContentComponent>
+        <HeaderComponent><Header /></HeaderComponent>
+        <ContentComponent>{this.renderSelectedPage()}</ContentComponent>
         <FooterComponent>
           <TabBar
             selectedIndex={this.state.selectedIndex}
@@ -62,4 +55,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
